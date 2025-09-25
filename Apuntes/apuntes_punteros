@@ -1,0 +1,64 @@
+Los pointers son un tipo de Dato, como los char y los int que hemos visto, solo que es algo más complejo que en otros lenguajes se hace en el backroom.
+Lo que pasa con los punteros, es que en la memoria se ve como si estuvieras almacenando números en tu RAM.
+Un puntero también almacena infomación, como un char, pero, en vez de almacenar un caracter, almacena una dirección. En resumidas cuentas, un Puntero es una parte de memoria que apunta a otra parte de la memoria.
+
+Para declarar un Puntero, sería algo como:
+```
+char* ptr;
+
+```
+Este * indica que es un Puntero.
+
+Un puntero necesita 8 veces más tamaño que un Char.
+
+Haciendo esto, almacenamos el "dónde" está almacenado el char c en la memoria.
+Esto se conoce como "referencing".
+```
+char c;
+char* ptr;
+
+c = 'L';
+ptr = &c;
+```
+Por seguir el video, c está ubicado en 0x0 y ptr en 0x8.
+Lo que almacena c es 'L' y lo que almacena ptr es '0x0'.
+
+Dato extra, el tipo de valor que indiques en al inicializar el Puntero, es al tipo de valor que apunta, es decir, "char* ptr_to_char;" apunta a un valor de tipo Char y "int* ptr_to_int;" apunta a un valor tipo Int.
+
+En caso de querer variar el valor al que apunta un Puntero, sería algo tal que así:
+```
+*ptr = 'O';
+``` 
+Esto cambia el valor de c, que antes era 'L', a 'O'.
+A esto se le denomina "dereferencing"
+
+Si quisieramos guardar el equivalente a un String, con un conjunto de caracteres, por ejemplo:
+```
+char *str;
+
+str = "LOL";
+```
+Esto almacena en el Puntero los tres caracteres desde el espacio donde esté el numero de caracteres que guarde más 1 (el que indica que ahí acaba, que es un cero) en este caso quedaría algo como:
+```
+char *str;
+
+str = "LOL";
+
+write(1, $str, 3);
+---------------------------------
+
+str
+0x0  0x1  0x2  0x3  0x4  0x5 
+76 | 79 | 76 | 0 |
+```
+
+En el caso de hacer "str = str + 1;", lo que hace es saltar el primer caracter almacenado, siguiendo el ejemplo de antes, ahora imprimiría "OL"
+Esto se conoce como 'Pointer arithmetic'
+
+Ejemplo de uso, si el str no llega hasta el '\0', que haga X
+```
+if (str != '\0')
+{
+	
+}
+```
