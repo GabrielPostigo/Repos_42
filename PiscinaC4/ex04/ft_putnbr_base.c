@@ -20,11 +20,11 @@ void	ft_putnbr_base(int nbr, char *base)
 	while (base[blen])
 	{
 		if (base[blen] == '-' || base[blen] == '+')
-			return (1);
+			return (0);
 		blen++;
 	}
 	if (blen <= 1)
-		return (1);
+		return (0);
 	if (nbr >= blen)
 		ft_putnbr_base(nbr / blen, base);
 	write(1, base[nbr % blen], 1);
